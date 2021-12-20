@@ -2,7 +2,13 @@
 
 Tutorial: Tour of Heros : https://angular.io/tutorial/toh-pt0
 
- 
+ Run module
+
+```
+ng serve --open
+```
+
+
 
 ```
 ng new angular-tour-of-heroes
