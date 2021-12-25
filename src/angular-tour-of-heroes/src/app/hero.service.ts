@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http'
+import { catchError, map, tap } from 'rxjs/operators';
+
 import { Hero } from './HeroIntf';
 import { HEROS } from './heroes/data/mock-heroes';
 import { Observable, of } from 'rxjs';
@@ -10,23 +12,43 @@ import { MessageService } from './message.service';
   providedIn: 'root'
 })
 export class HeroService {
+  private heroUrl = 'api/heroes';
 
-  constructor(private messageService: MessageService) { }
+  constructor(
+    private http:HttpClient,
+    private messageService: MessageService) { }
 
   // getHeroes(): Observable<Hero[]> {
   //   //return HEROS;
   //   const heros = of(HEROS);
   //   return heros
   // }
+  private log(msg:string){
+    this.messageService.add(`HeroService: ${msg}`);
+  }
 
-  getHeroes(): Observable<Hero[]> {
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+  
+      // TODO: send the error to remote logging infrastructure
+      console.error(error); // log to console instead
+  
+      // TODO: better job of transforming error for user consumption
+      this.log(`${operation} failed: ${error.message}`);
+  
+      // Let the app keep running by returning an empty result.
+      return of(result as T);
+    };
+  }
+
+  public getHeroes(): Observable<Hero[]> {
     //return HEROS;
     const heros = of(HEROS);
     this.messageService.add('HeroService: fetched heroes');
-    return heros
+    return this.http.get<Hero[]>(this.heroUrl).pipe(catchError(this.handleError<Hero[]>('getHeroes', [])));
   }
 
-  getHero(id: Number): Observable<Hero> {
+  public getHero(id: Number): Observable<Hero> {
     // For now, assume that a hero with the specified `id` always exists.
     // Error handling will be added in the next step of the tutorial.
     const hero = HEROS.find(h => h.id === id)!;
