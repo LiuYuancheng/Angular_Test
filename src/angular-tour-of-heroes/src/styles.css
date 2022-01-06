@@ -23,3 +23,24 @@ h1 {
   }
 
 html { background-color: #2A292A; }
+
+table, th , td  {
+  border: 1px solid grey;
+  border-collapse: collapse;
+  padding: 5px;
+  color: #fff;
+}
+table tr:nth-child(odd) {
+  background-color: #f1f1f1;
+}
+table tr:nth-child(even) {
+  background-color: #ffffff;
+}
+
+tr td:nth-child(odd) {
+  color: #000;
+}
+
+tr td:nth-child(even) {
+  color: #000;
+}
