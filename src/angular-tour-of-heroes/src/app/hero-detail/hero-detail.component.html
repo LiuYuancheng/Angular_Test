@@ -1,10 +1,13 @@
+<hr>
 <p>Check the detection result: </p>
 <div *ngIf="hero">
   <h2>{{hero.name | uppercase}} Details</h2>
-  <div><span>id: </span>{{hero.id}}</div>
+  <div><span>Detection module Id: </span>{{hero.id}}</div>
   <div>
-    <label for="hero-name">Module: </label>
+    <label for="hero-name">Module Name: </label>
     <input id="hero-name" [(ngModel)]="hero.name" placeholder="name">
   </div>
 </div>
+<button (click)="save()">save</button>
 <button (click)="goBack()">go back</button>
+<hr>

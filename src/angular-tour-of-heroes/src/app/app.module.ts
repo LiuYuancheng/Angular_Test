@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service'
+//import { HighchartsChartModule } from 'highcharts-angular';
+//import { NgChartsModule } from 'ng2-charts';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -26,6 +28,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
+    //NgChartsModule,
+    //HighchartsChartModule,
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
     // Remove it when a real server is ready to receive requests.

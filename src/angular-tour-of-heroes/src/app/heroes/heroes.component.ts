@@ -11,7 +11,7 @@ import { MessageService } from '../message.service';
 })
 
 export class HeroesComponent implements OnInit {
-  public heroName = 'Windstorm';
+  public heroName = 'All modules:';
   public heros = HEROS;
 
   constructor(private heroService: HeroService, private messageService: MessageService) {}

@@ -13,6 +13,9 @@ import { MessageService } from './message.service';
 })
 export class HeroService {
   private heroUrl = 'api/heroes';
+  public httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
 
   constructor(
     private http:HttpClient,
@@ -51,9 +54,22 @@ export class HeroService {
   public getHero(id: Number): Observable<Hero> {
     // For now, assume that a hero with the specified `id` always exists.
     // Error handling will be added in the next step of the tutorial.
-    const hero = HEROS.find(h => h.id === id)!;
-    this.messageService.add(`Modules Management Service: Apply module id=${id}`);
-    return of(hero);
+    //const hero = HEROS.find(h => h.id === id)!;
+    //this.messageService.add(`Modules Management Service: Apply module id=${id}`);
+    //return of(hero);
+    const url = `${this.heroUrl}/${id}`;
+    return this.http.get<Hero>(url).pipe(
+      tap(_ => this.log(`fetched detection result id=${id}`)),
+      catchError(this.handleError<Hero>(`getModule id=${id}`))
+    );
+  }
+
+
+  public updateHero(hero: Hero): Observable<any> {
+    return this.http.put(this.heroUrl, hero, this.httpOptions).pipe(
+      tap(_ => this.log(`updated new module id=${hero.id}`)),
+      catchError(this.handleError<any>('update module'))
+    );
   }
 
 
