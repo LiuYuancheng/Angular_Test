@@ -1,5 +1,11 @@
 # Angular_Test
 
+
+
+![](doc/img/dashboardMain.png)
+
+
+
 Tutorial: Tour of Heros : https://angular.io/tutorial/toh-pt0
 
  Run module
