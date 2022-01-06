@@ -24,7 +24,7 @@ export class HeroService {
   //   return heros
   // }
   private log(msg:string){
-    this.messageService.add(`HeroService: ${msg}`);
+    this.messageService.add(`Detection Service msg: ${msg}`);
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
@@ -44,7 +44,7 @@ export class HeroService {
   public getHeroes(): Observable<Hero[]> {
     //return HEROS;
     const heros = of(HEROS);
-    this.messageService.add('HeroService: fetched heroes');
+    this.messageService.add('Detection Service msg: fetched urls data set');
     return this.http.get<Hero[]>(this.heroUrl).pipe(catchError(this.handleError<Hero[]>('getHeroes', [])));
   }
 
@@ -52,7 +52,7 @@ export class HeroService {
     // For now, assume that a hero with the specified `id` always exists.
     // Error handling will be added in the next step of the tutorial.
     const hero = HEROS.find(h => h.id === id)!;
-    this.messageService.add(`HeroService: fetched hero id=${id}`);
+    this.messageService.add(`Modules Management Service: Apply module id=${id}`);
     return of(hero);
   }
 

@@ -1,6 +1,6 @@
 <p>messages works!</p>
 <div *ngIf = "messageService.message.length">
-    <h2> Messages:</h2>
+    <h4> Log Messages:</h4>
     <div *ngFor = 'let messageStr of messageService.message'> {{messageStr}} </div>
     <button class="clear" (click)="messageService.clear()"> clear</button>
 </div>
