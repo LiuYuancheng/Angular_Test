@@ -7,11 +7,13 @@
     <label for="hero-name">Module Name: </label>
     <input id="hero-name" [(ngModel)]="hero.name" placeholder="name">
   </div>
-  <p> Result detail: </p>
+  
+  <div *ngIf="hero.name==='Phishing Pedia' else elseTemplateName">
+  <p> Result detail : Checked [ 7 ] urls and find [ 1 ] pishing</p>
   <table>
     <th> Idx </th>
     <th> Title </th>
-    <th> Data </th>
+    <th> Phishing URL data</th>
 
     <tr>
       <td>1</td>
@@ -55,8 +57,14 @@
       <td>runtime </td>
       <td>5.7132</td>
     </tr>
-
+  
   </table>
+</div>
+
+<ng-template #elseTemplateName>
+  <p> Result detail : Checked [ 0 ] urls and find [ 0 ] pishing.</p>
+</ng-template>
+
   <p> </p>
   <button (click)="save()">save</button>
   <button (click)="goBack()">go back</button>
